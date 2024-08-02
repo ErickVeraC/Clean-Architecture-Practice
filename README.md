@@ -37,3 +37,17 @@ por ejemplo:
 - El archivo de conexion a la base de datos
 - La configuracion de nuestros tokens
 - La configuracion de nuestra libreria de encriptado
+
+### scripts
+
+Iniciar en produccion
+
+```bash
+npm start
+```
+
+Iniciar modo de desarrollo
+
+```bash
+npm run dev
+```
