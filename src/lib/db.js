@@ -1,6 +1,4 @@
-const { json } = require("express");
 const fs = require("node:fs");
-const { init } = require("../server");
 const dbName = "db.json";
 
 const initialData = {
@@ -22,7 +20,7 @@ function initialize() {
 // db.read() Regresa todo
 function read(key) {
   const content = fs.readFileSync(dbName, "utf8");
-  return JSON.parse(content);
+  const json = JSON.parse(content);
 
   if (key) {
     return json[key];
