@@ -1,6 +1,6 @@
 // Descripcion del servidor
 const express = require("express");
-const loggerMiddleware = require("./middlewares/logger");
+const { logger, authorizeMentors } = require("./middlewares/logger");
 
 const kodersRouter = require("./routes/koders.router");
 const mentorsRouter = require("./routes/mentors.router");
@@ -8,9 +8,9 @@ const mentorsRouter = require("./routes/mentors.router");
 const app = express();
 
 app.use(express.json());
-app.use(loggerMiddleware);
+app.use(logger);
 app.use("/koders", kodersRouter);
-app.use("/mentors", mentorsRouter);
+app.use("/mentors", authorizeMentors, mentorsRouter);
 
 app.get("/", (request, response) => {
   response.json({

@@ -5,4 +5,20 @@ function logger(request, response, next) {
   next();
 }
 
-module.exports = logger;
+const token = "SuperSecretToken";
+
+function authorizeMentors(request, response, next) {
+  if (request.headers.authorization === token) {
+    next();
+  } else {
+    response.status(401).json({
+      message: "You don't have any power here",
+      success: false,
+    });
+  }
+}
+
+module.exports = {
+  logger,
+  authorizeMentors,
+};
